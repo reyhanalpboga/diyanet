@@ -52,3 +52,8 @@ button:hover {
 .bg-purple-100 { background-color: #f3e8ff !important; color: #7e22ce !important; padding: 4px 8px; border-radius: 4px; }
 .bg-yellow-100 { background-color: #fef08a !important; color: #854d0e !important; padding: 4px 8px; border-radius: 4px; }
 .bg-gray-100 { background-color: #f3f4f6 !important; color: #374151 !important; padding: 4px 8px; border-radius: 4px; }
+
+/* Sayfa geçişleri ve karanlık mod renk değişimleri için yumuşak geçiş efekti */
+body, div, button, input, textarea {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
