@@ -1,81 +1,78 @@
-// Yetenekler Veri Dizisi
 const skills = [
-  { name: "HTML5 & CSS3", level: "İleri Seviye", desc: "Semantik HTML yapısı ve modern CSS düzenleri.", badgeClass: "bg-green-100 text-green-700 dark:bg-green-900 dark:text-green-300" },
-  { name: "Bootstrap 5", level: "Orta Seviye", desc: "Responsive mobil uyumlu arayüz geliştirme.", badgeClass: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300" },
-  { name: "JavaScript", level: "Temel / Orta", desc: "DOM manipülasyonu ve olay dinleyicileri.", badgeClass: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300" },
-  { name: "Git & GitHub", level: "Orta Seviye", desc: "Branching, commit ve versiyon kontrolü.", badgeClass: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300" }
+  { name: "HTML5 & CSS3", level: "İleri Seviye", desc: "Semantik HTML yapısı ve modern CSS düzenleri.", badge: "bg-success" },
+  { name: "Bootstrap 5", level: "Orta Seviye", desc: "Responsive mobil uyumlu arayüz geliştirme.", badge: "bg-primary" },
+  { name: "JavaScript", level: "Temel / Orta", desc: "DOM manipülasyonu ve olay dinleyicileri.", badge: "bg-warning text-dark" },
+  { name: "Git & GitHub", level: "Orta Seviye", desc: "Branching, commit ve versiyon kontrolü.", badge: "bg-secondary" }
 ];
 
 function renderSkills() {
   const container = document.getElementById('skills-container');
   if (container) {
     container.innerHTML = skills.map(skill => `
-      <div class="flex justify-between items-center p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 transition-colors">
+      <div class="d-flex justify-content-between align-items-center p-3 bg-body-tertiary rounded border">
         <div>
-          <h5 class="font-bold text-gray-800 dark:text-gray-100 text-sm mb-1">${skill.name}</h5>
-          <p class="text-xs text-gray-500 dark:text-gray-400 m-0">${skill.desc}</p>
+          <h6 class="fw-bold mb-1 small">${skill.name}</h6>
+          <p class="text-muted mb-0 small" style="font-size: 0.8rem;">${skill.desc}</p>
         </div>
-        <span class="text-xs px-2.5 py-1 rounded-full font-semibold ${skill.badgeClass}">${skill.level}</span>
+        <span class="badge ${skill.badge}">${skill.level}</span>
       </div>
     `).join('');
   }
 }
 
-// Eğitimler Veri Dizisi
 const courses = [
-  { title: "Web Geliştirme Temelleri", category: "Frontend", desc: "HTML5, CSS3 ve responsive tasarım prensipleri.", badgeClass: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300" },
-  { title: "JavaScript ile DOM Manipülasyonu", category: "Programlama", desc: "Dinamik içerik üretimi ve dizi metotları.", badgeClass: "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300" },
-  { title: "Versiyon Kontrolü (Git & GitHub)", category: "Araçlar", desc: "Branch yönetimi ve proje yayınlama.", badgeClass: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300" }
+  { title: "Web Geliştirme Temelleri", category: "Frontend", desc: "HTML5, CSS3 ve responsive tasarım prensipleri.", badge: "bg-primary" },
+  { title: "JavaScript ile DOM Manipülasyonu", category: "Programlama", desc: "Dinamik içerik üretimi ve dizi metotları.", badge: "bg-warning text-dark" },
+  { title: "Versiyon Kontrolü (Git & GitHub)", category: "Araçlar", desc: "Branch yönetimi ve proje yayınlama.", badge: "bg-secondary" }
 ];
 
 function renderCourses() {
   const container = document.getElementById('courses-container');
   if (container) {
     container.innerHTML = courses.map(course => `
-      <div class="p-3 bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 mb-2 transition-colors">
-        <div class="flex justify-between items-center mb-1">
-          <h5 class="font-bold text-blue-600 dark:text-blue-400 text-sm m-0">${course.title}</h5>
-          <span class="text-xs px-2 py-0.5 rounded font-medium ${course.badgeClass}">${course.category}</span>
+      <div class="p-3 bg-body-tertiary rounded border mb-2">
+        <div class="d-flex justify-content-between align-items-center mb-1">
+          <h6 class="fw-bold text-primary mb-0 small">${course.title}</h6>
+          <span class="badge ${course.badge}">${course.category}</span>
         </div>
-        <p class="text-xs text-gray-500 dark:text-gray-400 m-0">${course.desc}</p>
+        <p class="text-muted mb-0 small" style="font-size: 0.8rem;">${course.desc}</p>
       </div>
     `).join('');
   }
 }
 
-// SAYFA YÜKLENDİĞİNDE ÇALIŞACAK KODLAR
 document.addEventListener('DOMContentLoaded', () => {
-
-  // 1. Dinamik Verileri Yükle
   renderSkills();
   renderCourses();
 
-  // 2. Koyu Mod (Dark Mode) Kontrolü
+  // 1. KOYU MOD (DARK MODE)
   const darkModeToggle = document.getElementById('darkModeToggle');
-  const htmlElement = document.documentElement;
+  const body = document.body;
 
   if (localStorage.getItem('theme') === 'dark') {
-    htmlElement.classList.add('dark');
-    if (darkModeToggle) darkModeToggle.textContent = '☀️ Açık Mod';
-  } else {
-    htmlElement.classList.remove('dark');
-    if (darkModeToggle) darkModeToggle.textContent = '🌙 Koyu Mod';
+    body.classList.add('dark-theme');
+    if (darkModeToggle) {
+      darkModeToggle.textContent = '☀️ Açık Mod';
+      darkModeToggle.className = 'btn btn-light';
+    }
   }
 
   if (darkModeToggle) {
     darkModeToggle.addEventListener('click', () => {
-      htmlElement.classList.toggle('dark');
-      if (htmlElement.classList.contains('dark')) {
+      body.classList.toggle('dark-theme');
+      if (body.classList.contains('dark-theme')) {
         localStorage.setItem('theme', 'dark');
         darkModeToggle.textContent = '☀️ Açık Mod';
+        darkModeToggle.className = 'btn btn-light';
       } else {
         localStorage.setItem('theme', 'light');
         darkModeToggle.textContent = '🌙 Koyu Mod';
+        darkModeToggle.className = 'btn btn-dark';
       }
     });
   }
 
-  // 3. Sekme (Tab) Değiştirme Mantığı ve Buton Renk Yönetimi
+  // 2. SEKMELER (TABS)
   const tabButtons = document.querySelectorAll('.tab-btn');
   const tabContents = document.querySelectorAll('.tab-content');
 
@@ -84,37 +81,35 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       const targetTabId = button.getAttribute('data-tab');
 
-      // Bütün içerikleri gizle
-      tabContents.forEach(content => {
-        content.classList.add('hidden');
-      });
+      // Tüm sekmeleri gizle
+      tabContents.forEach(content => content.classList.add('hidden'));
 
-      // Seçilen içeriği göster
+      // Tıklanan sekmeyi göster
       const selectedContent = document.getElementById(targetTabId);
       if (selectedContent) {
         selectedContent.classList.remove('hidden');
       }
 
-      // Tüm butonların renklerini pasif yap, tıklananı mavi yap
+      // Buton renklerini güncelle
       tabButtons.forEach(btn => {
-        btn.classList.remove('bg-blue-600', 'text-white');
-        btn.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-800', 'dark:text-gray-200');
+        btn.classList.remove('btn-primary');
+        btn.classList.add('btn-outline-secondary');
       });
 
-      button.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-800', 'dark:text-gray-200');
-      button.classList.add('bg-blue-600', 'text-white');
+      button.classList.remove('btn-outline-secondary');
+      button.classList.add('btn-primary');
     });
   });
 
-  // 4. CV İndir Butonu Alert İşlemi
+  // CV İndir
   const cvBtn = document.getElementById('cvDownloadBtn');
   if (cvBtn) {
     cvBtn.addEventListener('click', () => {
-      alert("Teşekkürler! CV indirme işlemi başlatılıyor...");
+      alert("CV indirme işlemi başlatılıyor...");
     });
   }
 
-  // 5. İletişim Formu Gönderildiğinde Alert İşlemi
+  // İletişim Formu
   const contactForm = document.querySelector('#iletisim form');
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
