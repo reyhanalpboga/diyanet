@@ -57,3 +57,191 @@ button:hover {
 body, div, button, input, textarea {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
+
+body.dark-theme {
+  --bs-body-color: #f3f4f6;
+  --bs-body-bg: #111827;
+  --bs-secondary-color: #9ca3af;
+  --bs-tertiary-bg: #1f2937;
+  --bs-border-color: #374151;
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+}
+
+body.dark-theme .card,
+body.dark-theme .bg-white {
+  background-color: #1f2937 !important;
+  border-color: #374151 !important;
+  color: #f3f4f6;
+}
+
+body.dark-theme h1,
+body.dark-theme h2,
+body.dark-theme h6,
+body.dark-theme .text-dark {
+  color: #f3f4f6 !important;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .text-secondary {
+  color: #9ca3af !important;
+}
+
+body.dark-theme input,
+body.dark-theme textarea {
+  background-color: #111827;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #9ca3af;
+}
+
+.project-card {
+  background-color: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0.5rem 1.25rem rgba(31, 41, 55, 0.12);
+}
+
+.project-preview {
+  min-height: 180px;
+  padding: 12px;
+  background: linear-gradient(135deg, #dbeafe, #ede9fe);
+}
+
+.project-preview-bar {
+  display: flex;
+  gap: 5px;
+  padding: 8px 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px 8px 0 0;
+}
+
+.project-preview-bar span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #94a3b8;
+}
+
+.project-preview-content {
+  min-height: 132px;
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.94);
+  border-radius: 0 0 8px 8px;
+}
+
+.project-preview-nav,
+.project-preview-heading,
+.project-preview-line,
+.project-preview-button {
+  border-radius: 99px;
+  background: #cbd5e1;
+}
+
+.project-preview-nav {
+  width: 28%;
+  height: 6px;
+  margin-bottom: 17px;
+  background: #93c5fd;
+}
+
+.project-preview-heading {
+  width: 58%;
+  height: 12px;
+  margin-bottom: 10px;
+  background: #64748b;
+}
+
+.project-preview-line {
+  width: 82%;
+  height: 6px;
+  margin-bottom: 6px;
+}
+
+.project-preview-line.short {
+  width: 60%;
+}
+
+.project-preview-button {
+  width: 66px;
+  height: 18px;
+  margin-top: 12px;
+  background: #2563eb;
+}
+
+body.dark-theme .project-card {
+  background-color: #1f2937;
+  border-color: #374151 !important;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #f59e0b !important;
+  outline-offset: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+body.dark-theme button:focus-visible,
+body.dark-theme a:focus-visible,
+body.dark-theme input:focus-visible,
+body.dark-theme textarea:focus-visible {
+  outline-color: #fbbf24 !important;
+}
+
+@media (max-width: 575.98px) {
+  .nav-container {
+    align-items: stretch !important;
+  }
+
+  .nav-container nav {
+    display: grid !important;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+  }
+
+  .nav-container nav .tab-btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.5rem;
+    white-space: normal;
+  }
+
+  #darkModeToggle {
+    width: 100%;
+    min-height: 44px;
+  }
+
+  .project-preview {
+    min-height: 150px;
+  }
+
+  .project-preview-content {
+    min-height: 102px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body,
+  div,
+  button,
+  input,
+  textarea,
+  .project-card {
+    scroll-behavior: auto;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.hidden {
+  display: none !important;
+}
