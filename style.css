@@ -1,60 +1,29 @@
-/* Genel Sayfa Stilleri */
 body {
   background-color: #f3f4f6 !important;
   font-family: sans-serif;
-  padding: 20px;
 }
 
-.max-w-4xl {
-  max-width: 896px;
-  margin: 0 auto;
+.portfolio-container {
+  width: min(100%, 800px);
 }
 
-/* Beyaz Kartlar */
-.bg-white {
-  background-color: #ffffff !important;
-  padding: 24px;
-  border-radius: 12px;
-  border: 1px solid #e5e7eb;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+.profile-avatar {
+  display: grid;
+  width: 70px;
+  height: 70px;
+  flex: 0 0 70px;
+  place-items: center;
+  background-color: #2563eb;
+  color: #fff;
+  font-weight: 700;
 }
 
-/* Başlıklar ve Metinler */
-h1 {
-  font-size: 24px;
-  font-weight: bold;
-  color: #1f2937;
-}
-
-p {
-  color: #4b5563;
-}
-
-/* İletişime Geç Butonu */
-button {
-  background-color: #2563eb !important;
-  color: white !important;
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-}
-
-button:hover {
-  background-color: #1d4ed8 !important;
-}
-
-/* Rozetler */
-.bg-green-100 { background-color: #dcfce7 !important; color: #15803d !important; padding: 4px 8px; border-radius: 4px; }
-.bg-blue-100 { background-color: #dbeafe !important; color: #1d4ed8 !important; padding: 4px 8px; border-radius: 4px; }
-.bg-purple-100 { background-color: #f3e8ff !important; color: #7e22ce !important; padding: 4px 8px; border-radius: 4px; }
-.bg-yellow-100 { background-color: #fef08a !important; color: #854d0e !important; padding: 4px 8px; border-radius: 4px; }
-.bg-gray-100 { background-color: #f3f4f6 !important; color: #374151 !important; padding: 4px 8px; border-radius: 4px; }
-
-/* Sayfa geçişleri ve karanlık mod renk değişimleri için yumuşak geçiş efekti */
-body, div, button, input, textarea {
+body,
+button,
+input,
+textarea,
+.card,
+.nav-container {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -69,7 +38,7 @@ body.dark-theme {
 }
 
 body.dark-theme .card,
-body.dark-theme .bg-white {
+body.dark-theme .nav-container {
   background-color: #1f2937 !important;
   border-color: #374151 !important;
   color: #f3f4f6;
@@ -87,16 +56,18 @@ body.dark-theme .text-secondary {
   color: #9ca3af !important;
 }
 
-body.dark-theme input,
-body.dark-theme textarea {
+body.dark-theme .form-control {
   background-color: #111827;
   border-color: #4b5563;
   color: #f3f4f6;
 }
 
-body.dark-theme input::placeholder,
-body.dark-theme textarea::placeholder {
+body.dark-theme .form-control::placeholder {
   color: #9ca3af;
+}
+
+.footer-caption {
+  font-size: 0.8rem;
 }
 
 .project-card {
@@ -230,15 +201,29 @@ body.dark-theme textarea:focus-visible {
   }
 }
 
+@media (min-width: 576px) and (max-width: 991.98px) {
+  .nav-container {
+    align-items: stretch !important;
+  }
+
+  .nav-container nav .tab-btn {
+    min-height: 44px;
+  }
+
+  #darkModeToggle {
+    width: 100%;
+    min-height: 44px;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  body,
-  div,
-  button,
-  input,
-  textarea,
-  .project-card {
-    scroll-behavior: auto;
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }
 

@@ -90,16 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Koyu Mod Mantığı
   const darkModeToggle = document.getElementById('darkModeToggle');
-  if (localStorage.getItem('theme') === 'dark') {
-    document.body.classList.add('dark-theme');
-    darkModeToggle.textContent = "☀️ Açık Mod";
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const savedTheme = localStorage.getItem('theme');
+  const isDark = savedTheme === 'dark';
+
+  function applyTheme(isDark) {
+    document.body.classList.toggle('dark-theme', isDark);
+    darkModeToggle.textContent = isDark ? "☀️ Açık Mod" : "🌙 Koyu Mod";
+    themeColor.content = isDark ? '#111827' : '#f3f4f6';
   }
 
+  applyTheme(isDark);
+
   darkModeToggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark-theme');
-    const isDark = document.body.classList.contains('dark-theme');
-    localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    darkModeToggle.textContent = isDark ? "☀️ Açık Mod" : "🌙 Koyu Mod";
+    const nextIsDark = !document.body.classList.contains('dark-theme');
+    localStorage.setItem('theme', nextIsDark ? 'dark' : 'light');
+    applyTheme(nextIsDark);
   });
 
   // CV İndir
