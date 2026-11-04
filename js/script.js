@@ -15,7 +15,7 @@ const courses = [
   { name: "Modern JavaScript & SPA Mimarisi", level: "İleri Düzey", desc: "Modüler kodlama ve DOM yönetimi", badge: "bg-secondary" }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => { 
   // Bileşenleri yerleştirme
   document.getElementById('navbar-container').innerHTML = createNavbar();
   document.getElementById('hero-container').innerHTML = createHero();
